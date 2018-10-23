@@ -21,4 +21,11 @@
   <button ion-button color="dark" (click)="alertMe()">Alert</button>
   <button ion-button color="default" (click)="modalMe()">Modal</button>
 
+  <ion-card *ngIf="country">
+    <ion-card-title>Selected Country</ion-card-title>
+    <ion-card-content>
+      {{country}}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

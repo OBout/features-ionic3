@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
@@ -13,7 +13,9 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   selector: 'page-modalpage',
   templateUrl: 'modalpage.html',
 })
-export class ModalpagePage {
+export class ModalpagePage implements OnInit {
+
+  countries: Array<string>
 
   constructor(
     public navCtrl: NavController,
@@ -22,8 +24,31 @@ export class ModalpagePage {
   ) {
   }
 
+  ngOnInit() {
+    this.setCountries()
+  }
+
+  setCountries() {
+    this.countries = ["Belgium", "Holland", "Germany", "France"]
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalpagePage');
+  }
+
+  filterItems(ev: any) {
+    this.setCountries();
+    let val = ev.target.value;
+
+    if (val && val.trim() !== '') {
+      this.countries = this.countries.filter(function(item) {
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+
+  select(country: string) {
+    this.viewCtrl.dismiss(country);
   }
 
   close() {

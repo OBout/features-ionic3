@@ -9,6 +9,9 @@ import { ModalpagePage } from '../modalpage/modalpage'
 })
 export class HomePage {
 
+
+  public country: string
+
   constructor(
     public navCtrl: NavController,
     private toastCtrl: ToastController,
@@ -53,7 +56,7 @@ export class HomePage {
     let profileModal = this.modalCtrl.create(ModalpagePage);
     profileModal.present();
     profileModal.onDidDismiss(data => {
-      console.log(data)
+      this.country = data
     })
   }
 

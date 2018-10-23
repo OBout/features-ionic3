@@ -9,10 +9,18 @@
   <ion-navbar>
     <ion-title>modalpage</ion-title>
   </ion-navbar>
-
+  <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
-    <button ion-button color="danger" (click)="close()">Close</button>
+  <button ion-button color="danger" (click)="close()">Close</button>
+
+  <ion-list>
+    <a ion-item *ngFor="let country of countries" (click)="select(country)">
+      {{country}}
+    </a>
+  </ion-list>
+
 </ion-content>
